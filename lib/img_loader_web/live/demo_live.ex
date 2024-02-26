@@ -39,11 +39,6 @@ defmodule ImgLoaderWeb.DemoLive do
     end
   end
 
-  def handle_event("upload", _value, socket) do
-    socket.assign |> dbg()
-    {:noreply, socket}
-  end
-
   def mount(_params, _session, socket) do
     {
       :ok,

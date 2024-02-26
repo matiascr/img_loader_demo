@@ -6,35 +6,37 @@ defmodule ImgLoaderWeb.CustomComponents do
 
   def images(assigns) do
     ~H"""
-    <%= for image <- Repo.all(Image) do %>
-      <img src={parse_src(image)} alt={image.name} />
-    <% end %>
+    <div class="pt-10">
+      <%= for image <- Repo.all(Image) do %>
+        <img src={parse_src(image)} alt={image.name} />
+      <% end %>
+    </div>
     """
   end
 
   def parse_src(image) do
     binary = Base.encode64(image.image)
 
-    "data:image/#{image.extension};base64,#{binary}"
+    "data:#{image.extension};base64,#{binary}"
   end
 
   def upload_button(assigns) do
     ~H"""
     <button
       type="submit"
-      class="flex-none group relative rounded-2xl px-6 py-4 text-sm font-semibold leading-6 text-zinc-900 sm:py-6"
+      class="flex-none group relative rounded-2xl px-6 py-4 text-sm font-semibold leading-6 text-white sm:py-6"
     >
-      <span class="absolute inset-0 rounded-2xl bg-zinc-50 transition group-hover:bg-zinc-100 sm:group-hover:scale-105" />
-      <span class="relative flex items-center gap-4 sm:flex-col">
+      <span class="absolute inset-0 rounded-2xl bg-gray-800 antialiased transition group-hover:bg-zinc-500 sm:group-hover:scale-105" />
+      <span class="relative flex items-center gap-4 max:flex-col">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6">
           <line
             x1="3"
             y1="12"
             x2="12"
             y2="4"
-            fill="#18181B"
+            fill="white"
             fill-opacity=".15"
-            stroke="#18181B"
+            stroke="white"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -44,9 +46,9 @@ defmodule ImgLoaderWeb.CustomComponents do
             y1="12"
             x2="12"
             y2="4"
-            fill="#18181B"
+            fill="white"
             fill-opacity=".15"
-            stroke="#18181B"
+            stroke="white"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -56,9 +58,9 @@ defmodule ImgLoaderWeb.CustomComponents do
             y1="24"
             x2="12"
             y2="4"
-            fill="#18181B"
+            fill="white"
             fill-opacity=".15"
-            stroke="#18181B"
+            stroke="white"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
